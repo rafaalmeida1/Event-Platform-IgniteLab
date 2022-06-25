@@ -12,11 +12,11 @@ const GET_LESSONS_BY_SLUG_QUERY = gql`
             videoId
             description
             teacher {
-            avatarURL
-            bio
-            name
+                avatarURL
+                bio
+                name
             }
-    }
+        }
     }
 `
 
@@ -26,8 +26,8 @@ interface GetLessonBySlugResponse {
         videoId: string;
         description: string;
         teacher: {
-            bio: string;
             avatarURL: string;
+            bio: string;
             name: string;
         }
     }
@@ -67,16 +67,16 @@ export function Video(props: VideoProps) {
                 <div className="flex items-start gap-16">
                     <div className="flex-1">
                         <h1 className="text-2xl font-bold">
-                            {data.lesson.title} 
+                            {data.lesson.title}
                         </h1>
                         <p className="mt-4 text-gray-200 leading-relaxed">
-                        {data.lesson.description} 
+                            {data.lesson.description}
                         </p>
 
                         <div className="flex items-center gap-4 mt-6">
                             <img
                                 className="h-16 w-16 rounded-full border-2 border-blue-500"
-                                src={data.lesson.teacher.avatarURL} 
+                                src={data.lesson.teacher.avatarURL}
                             />
 
                             <div className="leading-relaxed">
