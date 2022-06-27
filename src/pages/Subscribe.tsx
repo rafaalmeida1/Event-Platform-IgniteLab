@@ -3,14 +3,8 @@ import { CircleNotch } from "phosphor-react";
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../components/Logo";
+import { useCreateSubscribeMutation } from "../graphql/generated";
 
-const CREATE_SUBSCRIBER_MUTATION = gql`
-    mutation createSubscribe($name: String!, $email:String!) {
-        createSubscriber(data: {name: $name, email: $email}){
-            id
-        }
-    }
-`
 
 export function Subscribe(){
     const navigate = useNavigate()
@@ -18,7 +12,7 @@ export function Subscribe(){
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
-    const [createSubscriber, {loading}] = useMutation(CREATE_SUBSCRIBER_MUTATION);
+    const [createSubscriber, {loading}] = useCreateSubscribeMutation();
 
     async function handleSubscribe(event: FormEvent){
         event.preventDefault();
